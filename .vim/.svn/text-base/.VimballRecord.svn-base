@@ -1,1 +1,0 @@
-vis.vba: call delete('/home/phinze/.vim/plugin/vis.vim')|call delete('/home/phinze/.vim/plugin/cecutil.vim')|call delete('/home/phinze/.vim/doc/vis.txt')
