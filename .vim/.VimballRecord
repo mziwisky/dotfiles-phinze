@@ -1,0 +1,2 @@
+vis.vba: call delete('/home/phinze/.vim/plugin/vis.vim')|call delete('/home/phinze/.vim/plugin/cecutil.vim')|call delete('/home/phinze/.vim/doc/vis.txt')
+specky.vba: call delete('/home/phinze/.vim/syntax/rdoc.vim')|call delete('/home/phinze/.vim/syntax/specrun.vim')|call delete('/home/phinze/.vim/syntax/rspec.vim')|call delete('/home/phinze/.vim/ftdetect/rspec.vim')|call delete('/home/phinze/.vim/ftplugin/rspec.vim')|call delete('/home/phinze/.vim/doc/specky.txt')|call delete('/home/phinze/.vim/plugin/specky.vim')|call delete('/home/phinze/.vim/snippets/rspec.snippets')

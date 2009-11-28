@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 46
+/personal/!svn/ver/44/config/trunk/.vim/plugin
+END
+cecutil.vim
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/personal/!svn/ver/44/config/trunk/.vim/plugin/cecutil.vim
+END
+AlignPlugin.vim
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/personal/!svn/ver/36/config/trunk/.vim/plugin/AlignPlugin.vim
+END
+matchit.vim
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/personal/!svn/ver/36/config/trunk/.vim/plugin/matchit.vim
+END
+AlignMapsPlugin.vim
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/personal/!svn/ver/36/config/trunk/.vim/plugin/AlignMapsPlugin.vim
+END
+rails.vim
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/personal/!svn/ver/39/config/trunk/.vim/plugin/rails.vim
+END
+snippetsEmu.vim
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/personal/!svn/ver/36/config/trunk/.vim/plugin/snippetsEmu.vim
+END
+fuzzyfinder.vim
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/personal/!svn/ver/44/config/trunk/.vim/plugin/fuzzyfinder.vim
+END
+gnupg.vim
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/personal/!svn/ver/4/config/trunk/.vim/plugin/gnupg.vim
+END
+allml.vim
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/personal/!svn/ver/44/config/trunk/.vim/plugin/allml.vim
+END
+surround.vim
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/personal/!svn/ver/36/config/trunk/.vim/plugin/surround.vim
+END
+vis.vim
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/personal/!svn/ver/44/config/trunk/.vim/plugin/vis.vim
+END
