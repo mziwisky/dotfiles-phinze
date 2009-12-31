@@ -13,5 +13,6 @@ xmodmap ~/.Xmodmap                    # Make capslock an additional ctrl in X
 #SSH_ASKPASS=/usr/lib/openssh/x11-ssh-askpass ssh-add < /dev/null
 xscreensaver -no-splash &
 xrdb ~/.Xresources
+xbindkeys &
 eval $(gpg-agent --daemon -vvv --log-file ~/.gpg-agent.log)
 exec /usr/bin/awesome
