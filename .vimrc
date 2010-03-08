@@ -280,3 +280,7 @@ endfunction
 
 map  <Esc>r :call RunRSpecInSplit('SQLITE=true ./script/spec --drb -bcfs '.@%.' -l <C-r>=line('.')<CR>')<CR>
 map  <Esc>s :call RunRSpecInSplit('spec -bcfs '.@%.' -l <C-r>=line('.')<CR>')<CR>
+
+command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
+	 	\ | wincmd p | diffthis
+
