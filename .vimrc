@@ -193,8 +193,8 @@ map gf <C-W>f
 " :let php_sync_method = 0
 
 " Highlight chars that go over the 100-column limit
-:highlight OverLength ctermfg=red
-:match OverLength '\%101v.*'
+":highlight OverLength ctermfg=red
+":match OverLength '\%101v.*'
 
 " http://vim.wikia.com/wiki/Display_shell_commands'_output_on_Vim_window
 " Run a shell command and open results in a horizontal split
