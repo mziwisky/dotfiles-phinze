@@ -55,6 +55,7 @@ inoremap # X#
 " -----------
 set foldenable
 set foldmethod=syntax
+set foldlevel=4
 	" turn on folding
 
 " -----------
