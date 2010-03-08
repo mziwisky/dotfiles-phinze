@@ -44,8 +44,13 @@ set shiftround
 	" round to nearest 4, don't just move 4
 set expandtab
     " no tabs only spaces!!
-set autoindent
-set smartindent
+set noautoindent
+set nosmartindent
+  " Don't you mean stupidindent? In all seriousness, 'smartindent' is an obsolete option for C-like syntax. It has been replaced with 'cindent', 
+  " and setting 'cindent' also overrides 'smartindent'. Vim has indentation support for many languages out-of-the-box, and setting 'smartindent' 
+  " (or 'cindent', for that matter) in your .vimrc might interfere with this. Use 'filetype indent on' and be happy.
+filetype indent on
+ 
 	" turn on vim's magical indenting...
 inoremap # X#
 	" ...but don't move # lines to the beginning.  see :help smartindent
