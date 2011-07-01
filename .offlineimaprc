@@ -1,0 +1,51 @@
+[general]
+accounts = gmail, braintree
+ui = TTY.TTYUI
+maxsyncaccounts = 5
+
+[Account gmail]
+localrepository = gmailLocal
+remoterepository = gmailRemote
+autorefresh = 5
+
+[Repository gmailLocal]
+type = Maildir
+localfolders = ~/mail/gmail
+sep = /
+
+[Repository gmailRemote]
+type = IMAP
+remotehost = imap.gmail.com
+ssl = yes
+remoteport = 993
+remoteuser = paul.t.hinze@gmail.com
+nametrans = lambda foldername: re.sub('^\[Gmail\].', '', foldername)
+# folderfilter = lambda foldername: not re.search('All Mail', foldername)
+
+[Account braintree]
+localrepository = braintreeLocal
+remoterepository = braintreeRemote
+autorefresh = 1
+
+[Repository braintreeLocal]
+type = Maildir
+localfolders = ~/mail/braintree
+sep = /
+
+[Repository braintreeRemote]
+type = IMAP
+remotehost = imap.gmail.com
+ssl = yes
+remoteport = 993
+remoteuser = paul.hinze@getbraintree.com
+nametrans = lambda foldername: re.sub('^\[Gmail\].', '', foldername)
+# folderfilter = lambda foldername: not re.search('All Mail', foldername)
+
+#[mbnames]
+#enabled = yes
+#filename = ~/.mutt/mailboxes
+#header = "mailboxes "
+#peritem = "+%(accountname)s/%(foldername)s"
+#sep = " "
+#footer = "\n"
+
