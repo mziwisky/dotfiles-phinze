@@ -1,0 +1,4 @@
+# == shorter is better
+
+# load shared aliases file
+source ~/.aliases
