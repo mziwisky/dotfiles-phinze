@@ -1,0 +1,7 @@
+# Configuration for virtualenvwrapper
+# see: http://www.doughellmann.com/docs/virtualenvwrapper/
+
+export WORKON_HOME=~/.virtualenv
+if [ ! -d $WORKON_HOME ]; then mkdir -p $WORKON_HOME; fi
+
+source /usr/local/share/python/virtualenvwrapper.sh

@@ -1,43 +1,9 @@
 # == shit i stare at all day long
 
-# ### Run vcs_info selectively to increase speed in large repos ################
-# 
-# # The following example shows a possible setup for vcs_info which displays
-# # staged and unstaged changes in the vcs_info prompt and prevents running
-# # it too often for speed reasons.
-# 
-# 
-# # Allow substitutions and expansions in the prompt
-# setopt promptsubst
-# 
-# # Load vcs_info to display information about version control repositories
-# autoload -Uz vcs_info
-# 
-# # Colors are nice too
-# autoload -Uz colors && colors
-# 
-# # Pull in desired vcs_info configs
-# source $ZDOTDIR/vcs_info/eager.zshconfig
-# source $ZDOTDIR/vcs_info/untracked-files.zshconfig
-# source $ZDOTDIR/vcs_info/remote-tracking-status.zshconfig
-# source $ZDOTDIR/vcs_info/formats.zshconfig
-# 
-# PROMPT='%{$fg_bold[green]%}%m:%{$fg_bold[blue]%}%~%{$fg_bold[green]%}%{$reset_color%}%# '
-# RPROMPT='${vcs_info_msg_0_}'
-
-
-# -- OR -- zsh-git
-
 # add path for zsh-git to world
 fpath=($fpath $ZDOTDIR/zsh-git/functions)
 typeset -U fpath
 
 setopt promptsubst
-
-autoload -U zgitinit; zgitinit
-
-# Load the prompt theme system
 autoload -U promptinit; promptinit
-
-# Use the wunjo prompt theme
 prompt wunjo
