@@ -1,5 +1,2 @@
 # load up rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
-# force sourcing of project-level rvmrc in case we're a tmux opened in project dir
-__rvm_project_rvmrc

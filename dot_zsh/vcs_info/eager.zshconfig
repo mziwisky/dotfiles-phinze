@@ -1,8 +1,0 @@
-# run vcs_info before every command
-
-autoload -Uz add-zsh-hook
-
-prompt_precmd() {
-  vcs_info
-}
-add-zsh-hook precmd prompt_precmd
