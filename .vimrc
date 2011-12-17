@@ -4,16 +4,8 @@
 " Author: Paul Hinze
 " ----------------------------------------------------------------------
 
-" ----------------
-" General Settings
-" ----------------
+" set: don't emulate vi bugs (must be first; has side effects)
 set nocompatible
-	" set: don't emulate vi bugs (must be first; has side effects)
-set enc=utf-8
-	" ensure utf-8 is our encoding of choice
-set backspace=indent,eol,start
-set t_kb=
-	" make backspace key work as it should
 
 " ----------------
 " Display Settings

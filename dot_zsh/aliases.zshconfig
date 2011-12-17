@@ -1,8 +1,4 @@
 # == shorter is better
 
-# fix pbpaste/copy in tmux
-alias pbcopy="reattach-to-user-namespace pbcopy"
-alias pbpaste="reattach-to-user-namespace pbpaste"
-
 # load shared aliases file
 source ~/.aliases
