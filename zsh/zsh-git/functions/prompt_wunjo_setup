@@ -1,0 +1,167 @@
+# wunjo prompt theme
+
+autoload -U add-zsh-hook
+autoload -U zgitinit; zgitinit
+autoload -U colors; colors
+
+revstring() {
+	git describe --tags --always $1 2>/dev/null ||
+	git rev-parse --short $1 2>/dev/null
+}
+
+
+rvm_ruby_prompt() {
+  if (declare -f rvm > /dev/null) {
+    if [[ $(rvm-prompt v g s) != 'system' ]]; then
+      echo "[$(rvm-prompt v g s)]"
+    fi
+  }
+}
+
+prompt_wunjo_setup() {
+	# PROMPT="%F{magenta}[%(!.%F{red}.%F{blue})%m : %F{green}%40<...<%~\$(prompt_wunjo_scm_branch)%F{magenta}]%F{blue}%(!.#.$) %f"
+	# PS1='%{$fg[white]%}%n%{$fg[cyan]%}:%{$fg_no_bold[yellow]%}%3~%{$fg_no_bold[green]%}$(git_info_for_prompt)%{$fg_no_bold[magenta]%}$(rvm_info_for_prompt)%{$reset_color%}# '
+	PROMPT='%{$fg[magenta]%}${PWD/#$HOME/~}%{$reset_color%} > '
+  RPROMPT='$(prompt_wunjo_scm_branch)$(rvm_ruby_prompt)%{$reset_color%}'
+	export PROMPT
+	export RPROMPT
+}
+
+prompt_wunjo_scm_status() {
+	zgit_isgit || return
+
+	head=$(zgit_head)
+	gitcommit=$(revstring $head)
+
+	local -a commits
+
+	if zgit_rebaseinfo; then
+		orig_commit=$(revstring $zgit_info[rb_head])
+		orig_name=$(git name-rev --name-only $zgit_info[rb_head])
+		orig="$orig_name($orig_commit)"
+		onto_commit=$(revstring $zgit_info[rb_onto])
+		onto_name=$(git name-rev --name-only $zgit_info[rb_onto])
+		onto="$onto_name($onto_commit)"
+
+		if [ -n "$zgit_info[rb_upstream]" ] && [ $zgit_info[rb_upstream] != $zgit_info[rb_onto] ]; then
+			upstream_commit=$(revstring $zgit_info[rb_upstream])
+			upstream_name=$(git name-rev --name-only $zgit_info[rb_upstream])
+			upstream="$upstream_name($upstream_commit)"
+			commits+="rebasing $upstream..$orig onto $onto"
+		else
+			commits+="rebasing $onto..$orig"
+		fi
+
+		local -a revs
+		revs=($(git rev-list $zgit_info[rb_onto]..HEAD))
+		if [ $#revs -gt 0 ]; then
+			commits+="\n$#revs commits in"
+		fi
+
+		if [ -f $zgit_info[dotest]/message ]; then
+			mess=$(head -n1 $zgit_info[dotest]/message)
+			commits+="on $mess"
+		fi
+	elif [ -n "$gitcommit" ]; then
+		commits+="on $head($gitcommit)"
+		local track_merge=$(zgit_tracking_merge)
+		if [ -n "$track_merge" ]; then
+			if git rev-parse --verify -q $track_merge >/dev/null; then
+				local track_remote=$(zgit_tracking_remote)
+				local tracked=$(revstring $track_merge 2>/dev/null)
+
+				local -a revs
+				revs=($(git rev-list --reverse $track_merge..HEAD))
+				if [ $#revs -gt 0 ]; then
+					local base=$(revstring $revs[1]~1)
+					local base_name=$(git name-rev --name-only $base)
+					local base_short=$(revstring $base)
+					local word_commits
+					if [ $#revs -gt 1 ]; then
+						word_commits='commits'
+					else
+						word_commits='commit'
+					fi
+
+					local conj="since"
+					if [[ "$base" == "$tracked" ]]; then
+						conj+=" tracked"
+						tracked=
+					fi
+					commits+="$#revs $word_commits $conj $base_name($base_short)"
+				fi
+
+				if [ -n "$tracked" ]; then
+					local track_name=$track_merge
+					if [[ $track_remote == "." ]]; then
+						track_name=${track_name##*/}
+					fi
+					tracked=$(revstring $tracked)
+					commits+="tracking $track_name"
+					if [[ "$tracked" != "$gitcommit" ]]; then
+						commits[$#commits]+="($tracked)"
+					fi
+					commits[$#commits]+=""
+				fi
+			fi
+		fi
+	fi
+
+	gitsvn=$(git rev-parse --verify -q --short git-svn)
+	if [ $? -eq 0 ]; then
+		gitsvnrev=$(zgit_svnhead $gitsvn)
+		gitsvn=$(revstring $gitsvn)
+		if [ -n "$gitsvnrev" ]; then
+			local svninfo=''
+			local -a revs
+			svninfo+="svn:r$gitsvnrev"
+			revs=($(git rev-list git-svn..HEAD))
+			if [ $#revs -gt 0 ]; then
+				svninfo+="@HEAD~$#revs"
+				svninfo+="($gitsvn)"
+			fi
+			commits+=$svninfo
+		fi
+	fi
+
+	if [ $#commits -gt 0 ]; then
+		echo -n " ${(j: :)commits}"
+	fi
+}
+
+prompt_wunjo_scm_branch() {
+	zgit_isgit || return
+
+	echo -n "%F{magenta} (%F{yellow}git:$(zgit_head)"
+
+	if zgit_inworktree; then
+
+		if ! zgit_isindexclean; then
+			echo -n "%F{green}●"
+		fi
+
+		local -a dirty
+		
+		if ! zgit_isworktreeclean; then
+			dirty+="%F{yellow}●"
+		fi
+
+		if zgit_hasunmerged; then
+			dirty+="%F{yellow}●"
+		fi
+
+		if zgit_hasuntracked; then
+			dirty+="%F{red}●"
+		fi
+
+		if [ $#dirty -gt 0 ]; then
+			echo -n "${(j::)dirty}"
+		fi
+	fi
+	
+	echo "%F{magenta})%f"
+}
+
+prompt_wunjo_setup "$@"
+
+# vim:set ft=zsh:

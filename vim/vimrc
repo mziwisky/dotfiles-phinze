@@ -1,28 +1,20 @@
-" -------+--------------------------------------------------------------
-" .vimrc | settings for the vim text editor
-" -------+
-" Author: Paul Hinze
-" ----------------------------------------------------------------------
-
-" set: don't emulate vi bugs (must be first; has side effects)
+" don't emulate vi bugs (must be first; has side effects)
 set nocompatible
 
-" ----------------
-" Display Settings
-" ----------------
+
+" # Display
+
+" don't break words in middle
 set linebreak
-	" set: don't break words in middle
+" show incomplete paragraphs even when they don't fit on screen (avoid @'s)
 set display+=lastline
-	" show incomplete paragraphs even when they don't fit on screen (avoid @'s)
+" always show ruler
 set ruler
-	" set: always show ruler
-set nohls
-	" set: don't highlight searches; it's annoying when the highlight sticks
+" turn on syntax hilighting
 syntax on
-	" set: turn on syntax hilighting
+" show line numbers
 set number
-" set t_Co=256
-	" enable 256 colors
+
 colorscheme desert256
 
 " --------------------

@@ -1,7 +1,0 @@
-source '.screenrc'
-
-screen -t 'running tests'   1
-screen -t 'writing tests'   2
-screen -t 'writing code'    3
-screen -t 'reading source'  4
-select 1
