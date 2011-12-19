@@ -1,4 +1,0 @@
-# == it's mostly repetition
-
-# all shells share history
-setopt APPEND_HISTORY

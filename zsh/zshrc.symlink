@@ -1,8 +1,8 @@
-# == root zsh config for shells
-# echo start: $(date)
-# # Include all files with a .zshconfig suffix in this directory
-for config in $ZDOTDIR/*.zshconfig; do
-#   echo "  ${config}:" $(date)
-  source $config
-done
-# echo end: $(date)
+# shortcut to this dotfiles path is $ZSH
+export ZSH=$HOME/.dotfiles
+
+# your project folder that we can `c [tab]` to
+export PROJECTS=~/Development
+
+# source every .zsh file in this rep
+for config_file ($ZSH/**/*.zsh) echo "sourcing: $config_file"; source $config_file

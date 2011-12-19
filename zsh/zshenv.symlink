@@ -1,2 +1,4 @@
-# ZDOTDIR - all zsh dotfiles live in ~/.zsh
-export ZDOTDIR=$HOME/.zsh
+# == root zsh config for non-login shells
+
+# Need PATH to be set properly for vim ! commands to work
+source $ZSH/homebrew/homebrew-path.zsh

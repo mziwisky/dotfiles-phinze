@@ -1,9 +1,0 @@
-# == shit i stare at all day long
-
-# add path for zsh-git to world
-fpath=($fpath $ZDOTDIR/zsh-git/functions)
-typeset -U fpath
-
-setopt promptsubst
-autoload -U promptinit; promptinit
-prompt wunjo
