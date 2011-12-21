@@ -5,4 +5,4 @@ export ZSH=$HOME/.dotfiles
 export PROJECTS=~/Development
 
 # source every .zsh file in this rep
-for config_file ($ZSH/**/*.zsh) echo "sourcing: $config_file"; source $config_file
+for config_file ($ZSH/**/*.zsh) source $config_file;
