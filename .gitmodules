@@ -1,36 +1,48 @@
 [submodule "vim/vim.symlink/bundle/splitjoin"]
 	path = vim/vim.symlink/bundle/splitjoin
 	url = https://github.com/AndrewRadev/splitjoin.vim.git
+  ignore = dirty
 [submodule "vim/vim.symlink/bundle/vim-colors-solarized"]
 	path = vim/vim.symlink/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
+  ignore = dirty
 [submodule "vim/vim.symlink/bundle/vim-pathogen"]
 	path = vim/vim.symlink/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen.git
+  ignore = dirty
 [submodule "vim/vim.symlink/bundle/vim-git"]
 	path = vim/vim.symlink/bundle/vim-git
 	url = https://github.com/tpope/vim-git.git
+  ignore = dirty
 [submodule "vim/vim.symlink/bundle/vim-fugitive"]
 	path = vim/vim.symlink/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+  ignore = dirty
 [submodule "vim/vim.symlink/bundle/vim-ruby"]
 	path = vim/vim.symlink/bundle/vim-ruby
 	url = https://github.com/vim-ruby/vim-ruby.git
+  ignore = dirty
 [submodule "vim/vim.symlink/bundle/lusty"]
 	path = vim/vim.symlink/bundle/lusty
 	url = https://github.com/sjbach/lusty.git
+  ignore = dirty
 [submodule "vim/vim.symlink/bundle/nerdtree"]
 	path = vim/vim.symlink/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
+  ignore = dirty
 [submodule "vim/vim.symlink/bundle/delimitMate"]
 	path = vim/vim.symlink/bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
+  ignore = dirty
 [submodule "vim/vim.symlink/bundle/vim-powerline"]
 	path = vim/vim.symlink/bundle/vim-powerline
 	url = https://github.com/Lokaltog/vim-powerline.git
+  ignore = dirty
 [submodule "vim/vim.symlink/bundle/command-t"]
 	path = vim/vim.symlink/bundle/command-t
 	url = https://github.com/wincent/Command-T.git
+  ignore = dirty
 [submodule "vim/vim.symlink/bundle/vim-distinguished"]
 	path = vim/vim.symlink/bundle/vim-distinguished
 	url = https://github.com/Lokaltog/vim-distinguished.git
+  ignore = dirty
