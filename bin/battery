@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+charge = %x(system_profiler SPPowerDataType | grep 'Charge Remaining' | awk '{print $4}')
+total = %x(system_profiler SPPowerDataType | grep 'Full Charge Capacity' | awk '{print $5}')
+
+percent = "%.0f%" % (charge.to_f / total.to_f * 100.0)
+
+puts percent
