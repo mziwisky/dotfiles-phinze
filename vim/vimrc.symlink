@@ -1,101 +1,82 @@
 " don't emulate vi bugs (must be first; has side effects)
 set nocompatible
 
+" ## Pathogen
 
-" # Display
+" Load up all pathogen bundles from the bundled pathogen
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+call pathogen#helptags()
+
+" ## Display
 
 " don't break words in middle
-set linebreak
+set linebreak 
 " show incomplete paragraphs even when they don't fit on screen (avoid @'s)
 set display+=lastline
 " always show ruler
 set ruler
 " turn on syntax hilighting
 syntax on
-
-set number " show line numbers
-
+" show line numbers
+set number 
+" allow buffers to be open in the background
 set hidden
+" keep 5 lines of context on the screen while scrolling, instead of scrolling when cursor is at very bottom
+set scrolloff=5
 
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
-call pathogen#helptags()
+" ## Theme
 
 set background=dark
-" colorscheme solarized
+colorscheme desert256
 
-" --------------------
-" Indentation and Tabs
-" --------------------
+" ## Indentation and Tabs
+
+" two spaces pleases
 set ts=2
-	" set tabstop to 4 spaces
 set shiftwidth=2
-	" make >> shift 4, not 8
-set shiftround
-	" round to nearest 4, don't just move 4
+" and no tab characters!
 set expandtab
-    " no tabs only spaces!!
+" round to nearest 2, don't just move 2
+set shiftround
+
+" `smartindent` is an obsolete option for C-like syntax. It has been replaced with `cindent`, 
+" and setting `cindent` also overrides `smartindent`. Vim has indentation
+" support for many languages out-of-the-box, and setting `smartindent` 
+" (or `cindent`, for that matter) in your .vimrc might interfere with this. Use `filetype indent on` and be happy.
 set noautoindent
 set nosmartindent
-  " Don't you mean stupidindent? In all seriousness, 'smartindent' is an obsolete option for C-like syntax. It has been replaced with 'cindent', 
-  " and setting 'cindent' also overrides 'smartindent'. Vim has indentation support for many languages out-of-the-box, and setting 'smartindent' 
-  " (or 'cindent', for that matter) in your .vimrc might interfere with this. Use 'filetype indent on' and be happy.
-filetype indent on
- 
-	" turn on vim's magical indenting...
-inoremap # X#
-	" ...but don't move # lines to the beginning.  see :help smartindent
+filetype plugin indent on
 
-" -----------
-" Folding
-" -----------
+" ## Code Folding
+
+" turn on folding
 set foldenable
-set foldmethod=syntax
-set foldlevel=4
-	" turn on folding
+" fold by indentation level
+set foldmethod=indent
+" start out with folds for all but really deep nesting expanded
+set foldlevel=9
+" ## Spell Checking
 
-" -----------
-" Spell Check
-" -----------
-map <F6> <Esc>:setlocal spell spelllang=en_us<CR>
-map <F7> <Esc>:setlocal spell spelllang=es_es<CR>
-map <F8> <Esc>:setlocal nospell<CR>
-	" map some keys to control it:
-	" 	F6 - on for English
-	" 	F7 - on for Spanish
-	" 	F8 - off
+" turn it on by default for certain files
+" files with extension .es.txt automatically spellchecked in Spanish
 au BufNewFile,BufRead *.en.txt set spell
 au BufNewFile,BufRead *.es.txt set spelllang=es_es
-	" turn it on by default for certain files
-	" files with extension .es.txt automatically spellchecked in Spanish
-	"
-" ----------------
-" GNU Screen Stuff 
-" ----------------
-" Prerequisite: in .screenrc put the following line:
-"   setenv SCREEN_RUNNING 1
-" The following will update the window title
-" NOTE: Commenting until I can figure out a way to store the old title and get
-"       it back instead of reverting to bash
-" if $SCREEN_RUNNING
-" 	au BufEnter * if expand('<afile>') != "" | silent !screen -X title "vim: <afile>:p:."
-" 	au VimLeave * silent !screen -X title "bash"
-" endif
-" 
-" ------------------
-" Backup File Tweaks
-" ------------------
-au BufWrite /private/tmp/crontab.* set nowritebackup
-	" don't write backup file when called by "crontab -e"; it breaks
-au BufWrite /private/etc/pw.* set nowritebackup
-	" same for "chpass"; breaks if backups written
 
-" -----------
-" Keybindings
-" -----------
+" ## Backup File Tweaks
+
+" don't write backup file when called by "crontab -e"; since that breaks it
+au BufWrite /private/tmp/crontab.* set nowritebackup
+" same for "chpass"; breaks if backups written
+au BufWrite /private/etc/pw.* set nowritebackup
+
+" ## Keybindings
+
+" make `-` and `_` work like `o` and `O` without leaving you stuck in insert mode.
 nnoremap - o<esc>
 nnoremap _ O<esc>
-	" make - and _ work like o and O without leaving you stuck in insert mode.
+
+" make up, down, home and end keys work intuitively for long paragraphs
 map <up> gk
 imap <up> <C-o>gk
 map <down> gj
@@ -104,17 +85,37 @@ map <home> g<home>
 imap <home> <C-o>g<home>
 map <end> g<end>
 imap <end> <C-o>g<end>
-	" make up, down, home and end keys work intuitively for long paragraphs
 
-" ----------------
-" Search
-" ----------------
+" fat fingers: map f1 to escape instead of help
+map <F1> <Esc>
+imap <F1> <Esc>
+
+" complete in command mode with tab
+cnoremap <Tab> <C-L><C-D>
+
+" ## Searching
+
+" Highligh found search results, can be turned off with `:noh`
+set hlsearch
+
+" This will have searches ignore case unless I use a capital letter
 set ignorecase
 set smartcase
-	" This will have searches ignore case unless I use a capital letter
+
+" Start searching right away instead of waiting for `<CR>`
 set incsearch
-	" Start searching right away
 
-command DiffOrig vert new | set bt=nofile | r # | 0d_ | diffthis
-	 	\ | wincmd p | diffthis
+" fix backspace in insert mode
+set backspace=indent,eol,start
 
+map <silent> <LocalLeader>nh :nohls<CR>
+map <silent> <LocalLeader>cc :TComment<CR>
+map <silent> <LocalLeader>rt :!ctags -R --exclude=".git\|.svn\|log\|tmp\|db\|pkg" --extra=+f<CR>
+
+function! Trim()
+  %s/\s*$//
+endfunction
+command! -nargs=0 Trim :call Trim()
+nnoremap <silent> <Leader>cw :Trim<CR>
+
+let g:html_number_lines = 0
