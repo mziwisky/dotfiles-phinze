@@ -1,4 +1,5 @@
 require 'rake'
+require 'pathname'
 
 desc "Hook our dotfiles into system-standard positions."
 task :install do
@@ -13,9 +14,9 @@ task :install do
     backup = false
 
     file = linkable.split('/').last.split('.symlink').last
-    target = "#{ENV["HOME"]}/.#{file}"
+    target = Pathname.new("#{ENV["HOME"]}/.#{file}")
 
-    if File.exists?(target) || File.symlink?(target)
+    if target.exist? && ! target.symlink?
       unless skip_all || overwrite_all || backup_all
         puts "File already exists: #{target}, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all"
         case STDIN.gets.chomp
