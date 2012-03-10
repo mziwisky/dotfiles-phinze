@@ -1,0 +1,25 @@
+[user]
+  email = paul.t.hinze@gmail.com
+[color]
+  ui = auto
+[alias]
+  ci = commit
+  co = checkout
+  st = status
+  ch = cherry -v origin
+  br = branch
+  addall = add -A .
+  hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+
+  current = log --pretty=format:'%ad %h %d' --abbrev-commit --date=short -1
+  cur = log --pretty=format:'%ad %h %d' --abbrev-commit --date=short -1
+
+  # show difference between the HEAD and the index
+  staged = diff --cached
+
+  # show difference between working tree and the index
+  unstaged = diff
+[push]
+  default = current
+[core]
+  excludesfile = /Users/phinze/.gitignore_global
