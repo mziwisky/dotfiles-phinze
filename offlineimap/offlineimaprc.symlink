@@ -1,0 +1,49 @@
+[general]
+accounts = gmail, braintree
+ui = ttyui
+maxsyncaccounts = 3
+pythonfile = ~/.dotfiles/offlineimap/offlineimap.py
+
+[Account gmail]
+localrepository = gmailLocal
+remoterepository = gmailRemote
+autorefresh = 5
+maxconnections = 3
+idlefolders = ['INBOX']
+
+[Repository gmailLocal]
+type = Maildir
+localfolders = ~/.mail/gmail
+sep = /
+
+[Repository gmailRemote]
+type = IMAP
+remotehost = imap.gmail.com
+ssl = yes
+remoteport = 993
+remoteuser = paul.t.hinze@gmail.com
+remotepasseval = keychain.get_password('offlineimap.gmail.personal', 'paul.t.hinze@gmail.com')
+nametrans = lambda foldername: re.sub('^\[Gmail\].', '', foldername)
+folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/Trash']
+
+[Account braintree]
+localrepository = braintreeLocal
+remoterepository = braintreeRemote
+autorefresh = 5
+maxconnections = 3
+idlefolders = ['INBOX']
+
+[Repository braintreeLocal]
+type = Maildir
+localfolders = ~/.mail/braintree
+sep = /
+
+[Repository braintreeRemote]
+type = IMAP
+remotehost = imap.gmail.com
+ssl = yes
+remoteport = 993
+remoteuser = paul.hinze@getbraintree.com
+remotepasseval = keychain.get_password('offlineimap.gmail.braintree', 'paul.hinze@getbraintree.com')
+nametrans = lambda foldername: re.sub('^\[Gmail\].', '', foldername)
+folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/Trash']
