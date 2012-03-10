@@ -1,4 +1,8 @@
-# == it's mostly repetition
+# == it's mostly repetition, after all
+
+export HISTFILE=~/.zsh_history # the tome of history
+export HISTSIZE=50000
+export SAVEHIST=50000
 
 setopt HIST_VERIFY
 setopt SHARE_HISTORY # share history between sessions ???
