@@ -1,0 +1,18 @@
+# muttrc
+# Mail Headers
+
+# First, ignore all headers. (then selecting some is easy)
+ignore *          
+
+# Show these headers 
+unignore From:
+unignore To:
+unignore Reply-To:
+unignore Subject:
+unignore X-Mailer:
+unignore User-Agent:
+unignore Cc:
+unignore Date:
+
+# Order in which the headers are presented.
+hdr_order Date: From: X-Mailer: User-Agent: To: Cc: Subject:	

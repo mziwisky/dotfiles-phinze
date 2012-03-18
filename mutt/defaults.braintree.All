@@ -1,0 +1,2 @@
+source ~/.dotfiles/mutt/defaults.braintree
+macro index A "c=braintree/INBOX\n" "Switch to braintree inbox"

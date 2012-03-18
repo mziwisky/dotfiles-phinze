@@ -1,0 +1,7 @@
+macro index d "<delete-message>"  # Reset any tricky trash macros
+macro pager d "<delete-message>"
+
+set index_format="%4C %Z %{%b %d %H:%M:%S} %-20.20L [%5c] %s"
+                                  # Reset index format
+
+set smtp_url="" # Clear SMTP server, will be set per-account

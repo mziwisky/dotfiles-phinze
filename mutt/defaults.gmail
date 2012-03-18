@@ -1,0 +1,11 @@
+
+source ~/.dotfiles/mutt/defaults.global
+
+set smtp_url="smtps://paul.t.hinze@gmail.com@smtp.gmail.com"
+set postponed  = "=gmail/Drafts"
+set from = "paul.t.hinze@gmail.com"
+set status_format="-%r-paul.t.hinze@gmail.com: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?o? Old:%o?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?%?l? %l?]---(%s/%S)-%>-(%P)---"
+set record = ""
+macro index I "c=braintree/INBOX\n"    "Switch to braintree"
+macro index A "c=gmail/All<tab>\n" "Switch to gmail archive"
+    # <tab> is hack for space in mailbox name i don't want to deal with

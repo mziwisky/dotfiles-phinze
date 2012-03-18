@@ -1,0 +1,38 @@
+# vim: filetype=muttrc
+
+# color syntax: 
+#     [object]     [foreground]   [background]    [regexp]
+color normal	   white          color233
+color attachment   brightyellow   color233
+color hdrdefault   cyan           color233
+color indicator    color233       cyan
+color markers	   brightred      color233
+color quoted	   green          color233
+color signature    cyan           color233
+color status	   white         blue
+color tilde	       blue           color233
+color tree	       red            color233
+
+color header	   brightred      color233           ^From:
+color header	   brightcyan     color233           ^To:
+color header	   brightcyan     color233           ^Reply-To:
+color header	   brightcyan     color233           ^Cc:
+color header	   brightblue     color233           ^Subject:
+
+# enphasized text
+color body	green		default		"[*][-[:alnum:]]+[*]"
+color body	green		default		"[ ]_[-[:alnum:]]+_([ ]|\.)"
+
+# email addresses
+color body         brightred      default         "[-a-zA-Z_0-9.+]+@[-a-zA-Z_0-9.]+"
+# Ronald J Kimball's url regexp. mutt-user 04/05/28
+color body	brightgreen	   default  \
+	"(https?|ftp|gopher|finger)://([^"'"'"' \t\r\n)>.,!?&]\
+	|[.,!?][^"'"'"' \t\r\n)>.,!?&]|&([^g]|$)|&g([^t]|$)|&gt([^;]|$))+"
+
+# color index syntax: 
+#           [foreground]   [background]    [pattern]
+color index	blue           color233           ~D
+color index	magenta        color233           ~T
+color index cyan          color233           ~N
+color index red            color233           ~F

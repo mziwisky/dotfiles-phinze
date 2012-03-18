@@ -1,0 +1,2 @@
+source ~/.dotfiles/mutt/defaults.gmail
+macro index A "c=gmail/INBOX\n" "Switch to gmail inbox"
