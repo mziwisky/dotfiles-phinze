@@ -1,0 +1,14 @@
+# Images
+Image/JPEG; view_attachment %s
+Image/PNG; view_attachment %s
+Image/GIF; view_attachment %s
+
+# UnIdentified.
+Application/octet-stream; view_attachment %s "-" 
+
+# PDF
+Application/PDF; view_attachment %s pdf
+
+# HTML
+#text/html; lynx -force_html %s
+text/html; view_attachment %s html

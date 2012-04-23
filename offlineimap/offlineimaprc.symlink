@@ -7,7 +7,7 @@ pythonfile = ~/.dotfiles/offlineimap/offlineimap.py
 [Account gmail]
 localrepository = gmailLocal
 remoterepository = gmailRemote
-autorefresh = 5
+autorefresh = 1
 maxconnections = 3
 idlefolders = ['INBOX']
 
@@ -29,7 +29,7 @@ folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam', '[Gmail]/Tr
 [Account braintree]
 localrepository = braintreeLocal
 remoterepository = braintreeRemote
-autorefresh = 5
+autorefresh = 1
 maxconnections = 3
 idlefolders = ['INBOX']
 

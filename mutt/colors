@@ -2,22 +2,22 @@
 
 # color syntax: 
 #     [object]     [foreground]   [background]    [regexp]
-color normal	   white          color233
-color attachment   brightyellow   color233
-color hdrdefault   cyan           color233
-color indicator    color233       cyan
-color markers	   brightred      color233
-color quoted	   green          color233
-color signature    cyan           color233
+color normal	   white          black
+color attachment   brightyellow   black
+color hdrdefault   cyan           black
+color indicator    black       cyan
+color markers	   brightred      black
+color quoted	   green          black
+color signature    cyan           black
 color status	   white         blue
-color tilde	       blue           color233
-color tree	       red            color233
+color tilde	       blue           black
+color tree	       red            black
 
-color header	   brightred      color233           ^From:
-color header	   brightcyan     color233           ^To:
-color header	   brightcyan     color233           ^Reply-To:
-color header	   brightcyan     color233           ^Cc:
-color header	   brightblue     color233           ^Subject:
+color header	   brightred      black           ^From:
+color header	   brightcyan     black           ^To:
+color header	   brightcyan     black           ^Reply-To:
+color header	   brightcyan     black           ^Cc:
+color header	   brightblue     black           ^Subject:
 
 # enphasized text
 color body	green		default		"[*][-[:alnum:]]+[*]"
@@ -32,7 +32,7 @@ color body	brightgreen	   default  \
 
 # color index syntax: 
 #           [foreground]   [background]    [pattern]
-color index	blue           color233           ~D
-color index	magenta        color233           ~T
-color index cyan          color233           ~N
-color index red            color233           ~F
+color index	blue           black           ~D
+color index	magenta        black           ~T
+color index cyan          black           ~N
+color index red            black           ~F

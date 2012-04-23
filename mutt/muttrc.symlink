@@ -63,7 +63,7 @@ set pager_format="%Z %C/%m %d (%F) %s (%c/%l) %|-"
 # ---> Pager General
 set pager_stop                 # don't move to the next message on down scroll at bottom
 set implicit_autoview          # don't require explicit enumeration of all autoview types
-set pager_index_lines = 6      # Show 2 messages on either side of the message I'm reading.
+set pager_index_lines = 10      # Show 2 messages on either side of the message I'm reading.
 set display_filter='~/.dotfiles/mutt/scripts/mail-to-filter'
                                # script that snips long Cc: lists, but only when headers are being
                                # weeded, so it's easy to see them when needed

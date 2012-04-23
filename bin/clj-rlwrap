@@ -35,7 +35,7 @@ fi
 
 if [ $# -eq 0 ]; then
   CLASSPATH="$CLASSPATH:${PWD}/classes"
-  rlwrap --remember -c -b $BREAK_CHARS -f $cljcompletions clj
+  rlwrap --remember -c -b $BREAK_CHARS clj
 else
   exec java -classpath $cp $cljclass $*
 fi
