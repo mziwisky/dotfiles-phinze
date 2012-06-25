@@ -67,3 +67,9 @@
 [submodule "vim/vim.symlink/bundle/vimux"]
 	path = vim/vim.symlink/bundle/vimux
 	url = https://github.com/benmills/vimux
+[submodule "vim/vim.symlink/bundle/vim-ledger"]
+	path = vim/vim.symlink/bundle/vim-ledger
+	url = https://github.com/cypok/vim-ledger
+[submodule "vim/vim.symlink/bundle/vimux-ruby-test"]
+	path = vim/vim.symlink/bundle/vimux-ruby-test
+	url = https://github.com/pgr0ss/vimux-ruby-test

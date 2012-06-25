@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Retrieve irssi notifications from fnotify script via SSH.
+# See full blog post at
+# http://dev.tritarget.org/2010/07/16/irssi-notifications-over-ssh.html
+
+SSH_CMD="ssh phinze@phinze.xen.prgmr.com"
+
+# Set this to what ever unique key generation you wish
+RESET_KEY=`date | sha1sum | cut -d\  -f1`
+
+#####################################################################
+FIRST_RUN=yes
+$SSH_CMD -n \
+    "tail -n10 .irssi/fnotify ; echo 'reset $RESET_KEY' > .irssi/fnotify ; tail -f .irssi/fnotify" \
+    | while read heading message; do
+        if [ "x$FIRST_RUN$heading" == "xyesreset" ]; then
+            if [ "x$message" == "x$RESET_KEY" ]; then
+                FIRST_RUN=no
+            fi
+        elif [ "x$FIRST_RUN$heading" == "xnoRequestURLBrowse" ]; then
+            growlnotify -n Irssi -a Terminal -m "opening url\n$message" "irssi"
+            open "$message"
+        else
+            growlnotify -n Irssi -a Terminal -m "$message" "$heading"
+        fi
+    done
