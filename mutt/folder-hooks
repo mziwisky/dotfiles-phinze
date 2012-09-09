@@ -6,4 +6,3 @@ folder-hook =gmail            source ~/.dotfiles/mutt/defaults.gmail
 folder-hook =gmail/All        source ~/.dotfiles/mutt/defaults.gmail.All
 folder-hook =braintree        source ~/.dotfiles/mutt/defaults.braintree
 folder-hook =braintree/All    source ~/.dotfiles/mutt/defaults.braintree.All
-
