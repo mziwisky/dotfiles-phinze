@@ -1,6 +1,6 @@
 [user]
-  name = phinze
-  email = paul.t.hinze@gmail.com
+  name = Paul Hinze
+  email = paulh@instructure.com
 [color]
   ui = auto
 [alias]
@@ -21,7 +21,11 @@
   # show difference between working tree and the index
   unstaged = diff
 
+  tagdate = log --tags --simplify-by-decoration --pretty=format:\"%ai %d\"
+
 [push]
   default = current
 [core]
-  excludesfile = /Users/phinze/.gitignore_global
+  excludesfile = ~/.gitignore_global
+[credential]
+	helper = osxkeychain
