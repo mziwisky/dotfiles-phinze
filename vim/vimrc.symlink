@@ -28,7 +28,7 @@ set scrolloff=5
 " ## Theme
 
 set background=dark
-colorscheme desert256
+colorscheme Tomorrow-Night-Eighties
 
 " ## Indentation and Tabs
 
@@ -50,8 +50,8 @@ filetype plugin indent on
 
 " ## Code Folding
 
-" turn on folding
-set foldenable
+" turn off folding by default
+set nofoldenable
 " fold by indentation level
 set foldmethod=indent
 " start out with folds for all but really deep nesting expanded
@@ -119,3 +119,11 @@ command! -nargs=0 Trim :call Trim()
 nnoremap <silent> <Leader>cw :Trim<CR>
 
 let g:html_number_lines = 0
+
+function! GitGrepWord()
+  cgetexpr system("git grep -n '" . expand("<cword>") . "'")
+  cwin
+  echo 'Number of matches: ' . len(getqflist())
+endfunction
+command! -nargs=0 GitGrepWord :call GitGrepWord()
+nnoremap <silent> <Leader>gw :GitGrepWord<CR>

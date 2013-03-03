@@ -12,3 +12,7 @@ map <Leader>rx :CloseVimTmuxPanes<CR>
 
 " Interrupt any command running in the runner pane
 map <Leader>rs :InterruptVimTmuxRunner<CR>
+
+let g:VimuxOrientation = "h"
+let g:VimuxHeight = 40
+let g:VimuxUseNearestPane = 1
