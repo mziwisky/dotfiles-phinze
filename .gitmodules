@@ -99,3 +99,9 @@
 [submodule "vim/vim.symlink/bundle/vim-tomorrow-theme"]
 	path = vim/vim.symlink/bundle/vim-tomorrow-theme
 	url = https://github.com/chriskempson/vim-tomorrow-theme
+[submodule "vim/vim.symlink/bundle/tabular"]
+	path = vim/vim.symlink/bundle/tabular
+	url = https://github.com/godlygeek/tabular
+[submodule "vim/vim.symlink/bundle/syntastic"]
+	path = vim/vim.symlink/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic
