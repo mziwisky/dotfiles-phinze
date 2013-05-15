@@ -1,3 +1,4 @@
 .*sw[a-z]
 tags
 vendor/plugins/multiple_root_accounts/
+.ruby-version

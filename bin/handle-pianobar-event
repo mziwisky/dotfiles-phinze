@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'logger'
+
+event = ARGV.first
+
+log = Logger.new('/tmp/alfred-events.log')
+log.info "EVENT RECEIVED: #{event}"
+
+input = {}
+$stdin.each_line do |line|
+  key, val = line.split('=')
+  input[key] = val.chomp
+end
+
+if event == 'songexplain'
+  log.info input.inspect
+end

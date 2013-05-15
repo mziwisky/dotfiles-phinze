@@ -9,7 +9,7 @@ bindkey "^I" expand-or-complete-with-dots
 fpath=($ZSH/zsh/functions $fpath)
 autoload -U $ZSH/zsh/functions/*(:t)
 
-homebrew_zsh=/usr/local/share/zsh
+homebrew_zsh=$(brew --prefix zsh)/share/zsh
 fpath=($homebrew_zsh/functions $fpath)
 autoload -U $homebrew_zsh/functions/*(:t)
 

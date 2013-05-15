@@ -17,11 +17,13 @@ bind pager K   previous-entry
 bind pager H   exit
 bind pager L   view-attachments
 	# (add a shift and get vim-esque message browsing)
-bind pager \cf    half-down
-bind pager \cb    half-up
-bind pager \cn    next-line
-bind pager \cp    previous-line
+bind index,pager \cf    half-down
+bind index,pager \cb    half-up
+bind index,pager \cn    next-line
+bind index,pager \cp    previous-line
 	# emacs for screen shifting
+	#
+bind index \cr    imap-fetch-mail
 
 bind pager <down> next-line
 bind pager <up>   previous-line

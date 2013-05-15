@@ -1,15 +1,21 @@
 [user]
   name = Paul Hinze
   email = paulh@instructure.com
+
 [color]
   ui = auto
+
 [alias]
   ci = commit
   co = checkout
   st = status
-  ch = cherry -v origin
-  br = branch
-  addall = add -A .
+  s  = status
+  b  = branch
+  aa = add -A .
+  d  = diff
+  t  = tag
+  rh = reset --hard
+  rs = reset --soft
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 
   current = log --pretty=format:'%ad %h %d' --abbrev-commit --date=short -1
@@ -17,15 +23,18 @@
 
   # show difference between the HEAD and the index
   staged = diff --cached
-
-  # show difference between working tree and the index
-  unstaged = diff
+  stg    = diff --cached
 
   tagdate = log --tags --simplify-by-decoration --pretty=format:\"%ai %d\"
 
 [push]
   default = current
+
 [core]
-  excludesfile = ~/.gitignore_global
+  excludesfile = /opt/boxen/config/git/gitignore
+
 [credential]
-	helper = osxkeychain
+	helper = /opt/boxen/bin/boxen-git-credential
+
+[hub]
+protocol = https

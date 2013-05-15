@@ -1,7 +1,7 @@
 # == root zsh config for non-login shells
 
 # Need PATH to be set properly for vim ! commands to work
-source ~/.dotfiles/homebrew/homebrew-path.zsh
+source /opt/boxen/env.sh
 
-# Set up rbenv properly
-source ~/.dotfiles/ruby/rbenv.zsh
+# Avoid warnings when running sudo
+source ~/.dotfiles/boxen/ffi_search_path.zsh

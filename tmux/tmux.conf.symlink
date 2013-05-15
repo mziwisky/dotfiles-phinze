@@ -45,46 +45,13 @@ bind ^a last-window # toggle last window like screen
 
 set -g update-environment "DISPLAY WINDOWID SSH_ASKPASS SSH_AGENT_PID SSH_CONNECTION"
 
-set -g renumber-windows on
-
-bind K confirm kill-server
+bind K confirm kill-pane
 bind X confirm kill-window
 
 # let us use utf-8 drawing characters to make tab-like window formats
 setw -g utf8 on
 
-# tmux powerline
-set -g status on
-set -g status-interval 2
-set -g status-utf8 on
-set -g status-justify "centre"
-set -g status-left-length 90
-set -g status-right-length 90
-set -g status-left "#(~/.dotfiles/tmux/tmux-powerline/powerline.sh left)"
-set -g status-right "#(~/.dotfiles/tmux/tmux-powerline/powerline.sh right)"
-
-bind C-[ run '~/.dotfiles/tmux/tmux-powerline/mute_powerline.sh left'      # Mute left statusbar.
-bind C-] run '~/.dotfiles/tmux/tmux-powerline/mute_powerline.sh right'     # Mute right statusbar.
-
-set -g status-bg colour235
-set -g status-fg white
-
-# make background window look like white tab
-set-window-option -g window-status-bg default
-set-window-option -g window-status-fg white
-set-window-option -g window-status-attr none
-set-window-option -g window-status-format '#[fg=colour214,bg=colour235] #I #[fg=white,bg=colour236] #W #[default]'
-
-# make foreground window look like bold yellow foreground tab
-set-window-option -g window-status-current-attr none
-set-window-option -g window-status-current-format '#[fg=black,bg=colour214] #I #[fg=brightwhite,bg=colour238] #W #[default]'
-
-
-# active terminal yellow border, non-active white
-set -g pane-border-bg default
-set -g pane-border-fg colour238
-set -g pane-active-border-bg default
-set -g pane-active-border-fg colour214
+source '/opt/boxen/homebrew/lib/python2.7/site-packages/powerline/bindings/tmux/powerline.conf'
 
 # set a 256color $TERM variable so programs inside tmux know they can use 256 colors
 set -g default-terminal screen-256color
@@ -101,3 +68,35 @@ bind A set -g prefix ^a
 
 # As close to unlimited history as we can get
 set -g history-limit 999999999
+
+# Toggle mouse on with ^B m
+bind m \
+  set -g mode-mouse on \;\
+  set -g mouse-resize-pane on \;\
+  set -g mouse-select-pane on \;\
+  set -g mouse-select-window on \;\
+  display 'Mouse: ON'
+
+# Toggle mouse off with ^B M
+bind M \
+  set -g mode-mouse off \;\
+  set -g mouse-resize-pane off \;\
+  set -g mouse-select-pane off \;\
+  set -g mouse-select-window off \;\
+  display 'Mouse: OFF'
+
+
+# window navigation
+# bind-key -n M-C-h prev
+# bind-key -n M-C-l next
+# bind-key -n M-h select-pane -L
+# bind-key -n M-j select-pane -D
+# bind-key -n M-k select-pane -U
+# bind-key -n M-l select-pane -R
+
+# Don't delay sending escape to vim - so we don't see a delay when getting out
+# of insert mode.
+set -sg escape-time 0
+
+# tmuxstart
+bind S command-prompt -p "Make/attach session:" "new-window 'tmuxstart \'%%\''"

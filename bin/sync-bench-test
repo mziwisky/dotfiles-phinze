@@ -1,0 +1,4 @@
+rsync -crv --exclude puppet.conf modules/ root@puppetmaster.us-east-1.bench-test.insops.net:/etc/puppet/modules/
+rsync -crv --exclude puppet.conf files/ root@puppetmaster.us-east-1.bench-test.insops.net:/etc/puppet/files/
+rsync -crv manifests/ root@puppetmaster.us-east-1.bench-test.insops.net:/etc/puppet/manifests/
+ssh root@puppetmaster.us-east-1.bench-test.insops.net sed -ie 's/insops.net/bench-test.insops.net/g' 

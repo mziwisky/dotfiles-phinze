@@ -1,0 +1,12 @@
+# vim: set ft=sh:
+
+#
+# For editing dotfiles
+# 
+
+cd "${HOME}/.dotfiles"
+new_session -n dotfiles # code is always first
+split dotfiles -h -p '35'  # with a 35% pane for other stuff
+send_keys dotfiles.0 "vim" "Enter"
+
+select_pane dotfiles.0

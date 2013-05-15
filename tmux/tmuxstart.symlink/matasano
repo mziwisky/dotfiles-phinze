@@ -1,0 +1,10 @@
+# vim: set ft=sh:
+
+project="matasano"
+
+cd "${HOME}/dev/${project}"
+new_session -n $project # code is always first
+split $project -h -p '35'  # with a 35% pane for other stuff
+send_keys "${project}.0" "vim" "Enter"
+
+select_pane "${project}.0"

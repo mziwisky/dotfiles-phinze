@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'highline'
+
+def ask(question)
+  HighLine.new.ask(question) { |q| q.echo = '*' }
+end
+
+if ENV['AWS_SHELL']
+  puts "already in aws shell (AWS_SHELL env var is set)"
+  exit 1
+end
+
+puts "Starting a shell with aws credentials..."
+aws_env = {}
+aws_env['AWS_ACCESS_KEY_ID'] = ask('access key id: ')
+aws_env['AWS_SECRET_ACCESS_KEY'] = ask('secret access key: ')
+aws_env['AWS_SHELL'] = '1'
+aws_env['RPROMPT'] = "(aws-shell)" # assumes zsh
+
+exec(aws_env, ENV['SHELL'])

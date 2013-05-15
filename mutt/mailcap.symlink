@@ -11,4 +11,4 @@ Application/PDF; view_attachment %s pdf
 
 # HTML
 #text/html; lynx -force_html %s
-text/html; view_attachment %s html
+text/html; w3m -I %{charset} -T text/html; copiousoutput;

@@ -1,0 +1,13 @@
+# vim: set ft=sh:
+
+#
+# For editing brew-cask
+# 
+
+cd "$(brew --prefix)/Library/Taps/phinze-cask"
+
+new_session -n cask # code is always first
+split cask -h -p '35'  # with a 35% pane for other stuff
+send_keys cask.0 "vim" "Enter"
+
+select_pane cask.0

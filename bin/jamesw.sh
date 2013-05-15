@@ -1,0 +1,1 @@
+echo '<h1>The images of jamesw</h1><ul>' > jamesw.html; grep -R 'jamesw:.*http.*' * | cut -d'/' -f 2- | sort | sed -E 's|^(.{10}).*(https?://[^ ]+).*$|\1 \2|' | grep -E '(gif|jpg|png)' | awk '{print "<li>" $1 ": <img src=\"" $2 "\"/></li>"}' >> jamesw.html; echo '</ul>' >> jamesw.html

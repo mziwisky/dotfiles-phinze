@@ -1,0 +1,12 @@
+# vim: set ft=sh:
+
+#
+# Session for listening to music
+# 
+
+cd "${HOME}/Music"
+new_session -n pianobar # code is always first
+split pianobar -h -p '35'  # with a 35% pane for other stuff
+send_keys pianobar.0 "pianobar" "Enter"
+
+select_pane pianobar.0

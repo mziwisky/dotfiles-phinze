@@ -1,0 +1,15 @@
+# vim: set ft=sh:
+
+#
+# Session for hacking on canvas
+# 
+
+cd "${HOME}/dev/canvas-lms"
+new_session -n code # code is always first
+split code -h -p '35'  # with a 35% pane for tests
+send_keys code.0 "vim" "Enter"
+
+new_window -n logs
+send_keys logs "powder applog" "Enter"
+
+select_pane code.0
