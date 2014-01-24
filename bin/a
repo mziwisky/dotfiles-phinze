@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+cmd = ARGV.shift
+exec "#{cmd}", *ARGV, "-I", ENV["AWS_ACCESS_KEY"], "-S", ENV["AWS_SECRET_ACCESS_KEY"]

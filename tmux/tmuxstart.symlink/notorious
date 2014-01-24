@@ -1,0 +1,24 @@
+# vim: set ft=sh:
+
+#
+# Session for hacking on notorious
+# 
+
+cd "${HOME}/dev/notorious"
+new_session -n code # code is always first
+split code -h -p '35'  # with a 35% pane for tests
+send_keys code.0 "vim" "Enter"
+
+new_window -n kaltura
+send_keys logs "cd ~/dev/kaltura/" "Enter"
+
+new_window -n canvas
+send_keys canvas "cd ~/dev/canvas-lms/" "Enter"
+split canvas -h -p '35'
+split canvas.1 -v
+
+send_keys canvas.0 "vim" "Enter"
+send_keys canvas.2 "local-postgres" "start"
+send_keys canvas.3 "redis-server" "$(brew --prefix)/etc/redis.conf"
+
+select_pane code.0

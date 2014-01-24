@@ -2,34 +2,53 @@
 set nocompatible
 
 " Load vim powerline
-set rtp+=/opt/boxen/homebrew/lib/python2.7/site-packages/powerline/bindings/vim
+set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
 
 " ## Vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " let Vundle manage Vundle
-" required! 
+" required!
 Bundle 'gmarik/vundle'
 
-Bundle 'kien/ctrlp'
+Bundle 'benmills/vimux'
+Bundle 'chriskempson/vim-tomorrow-theme'
+Bundle 'gregsexton/gitv'
+Bundle 'jeroenbourgois/vim-actionscript'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'kien/rainbow_parentheses.vim'
+Bundle 'nono/vim-handlebars'
+Bundle 'rodjek/vim-puppet'
 Bundle 'scrooloose/nerdtree'
-Bundle 'kien/rainbow_parentheses'
+Bundle 'scrooloose/syntastic'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'tpope/vim-fugitive'
-Bundle 'rodjek/vim-puppet'
-Bundle 'vim-scripts/VimClojure'
-Bundle 'benmills/vimux'
-Bundle 'pgr0ss/vimux-ruby-test'
-Bundle 'pgr0ss/vimux-ruby-test'
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'scrooloose/syntastic'
-Bundle 'gregsexton/gitv'
+Bundle 'rking/vim-ruby-refactoring'
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-rails'
+Bundle 'matchit.zip'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'godlygeek/tabular'
+Bundle 'dart-lang/dart-vim-plugin'
+Bundle 'DrawIt'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-fireplace'
+Bundle 'rking/ag.vim'
+Bundle 'kien/ctrlp.vim'
+
+Bundle 'file:///Users/phinze/src/vimux-ruby-test'
+
+" run this in a terminal to update after saving
+" vim +BundleInstall +qall
+
 
 " ## Display
 
 " don't break words in middle
-set linebreak 
+set linebreak
 " show incomplete paragraphs even when they don't fit on screen (avoid @'s)
 set display+=lastline
 " always show ruler
@@ -37,7 +56,7 @@ set ruler
 " turn on syntax hilighting
 syntax on
 " show line numbers
-set number 
+set number
 " allow buffers to be open in the background
 set hidden
 " keep 5 lines of context on the screen while scrolling, instead of scrolling when cursor is at very bottom
@@ -58,9 +77,9 @@ set expandtab
 " round to nearest 2, don't just move 2
 set shiftround
 
-" `smartindent` is an obsolete option for C-like syntax. It has been replaced with `cindent`, 
+" `smartindent` is an obsolete option for C-like syntax. It has been replaced with `cindent`,
 " and setting `cindent` also overrides `smartindent`. Vim has indentation
-" support for many languages out-of-the-box, and setting `smartindent` 
+" support for many languages out-of-the-box, and setting `smartindent`
 " (or `cindent`, for that matter) in your .vimrc might interfere with this. Use `filetype indent on` and be happy.
 set noautoindent
 set nosmartindent
@@ -138,13 +157,8 @@ nnoremap <silent> <Leader>cw :Trim<CR>
 
 let g:html_number_lines = 0
 
-function! GitGrepWord()
-  cgetexpr system("git grep -n '" . expand("<cword>") . "'")
-  cwin
-  echo 'Number of matches: ' . len(getqflist())
-endfunction
-command! -nargs=0 GitGrepWord :call GitGrepWord()
-nnoremap <silent> <Leader>gw :GitGrepWord<CR>
+" http://robots.thoughtbot.com/faster-grepping-in-vim
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " EASIER SPLIT NAVIGATIONS
 " We can use different key mappings for easy navigation between splits to save
@@ -162,3 +176,9 @@ set splitright
 
 " Don't give attention message when existing swapfile is found
 set shortmess+=A
+
+" Use r in visual mode to replace selection with a paste.
+vmap r "_dP
+
+" Always trim trailing spaces on save
+autocmd BufWritePre *.* :%s/\s\+$//e

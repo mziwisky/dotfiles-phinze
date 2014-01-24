@@ -57,3 +57,6 @@ macro index S 'c=search'<enter><shell-escape>'mairix ' 'Enter Mairix search term
 macro pager S 'c=search'<enter><shell-escape>'mairix ' 'Enter Mairix search term'
 	# mairix search
 
+bind index G imap-fetch-mail
+
+bind editor \t complete-query

@@ -1,1 +1,0 @@
-alias ggrep='git grep'

@@ -6,22 +6,38 @@
   ui = auto
 
 [alias]
-  ci = commit
-  co = checkout
-  st = status
-  s  = status
-  b  = branch
+  a  = add
   aa = add -A .
+  b  = branch
+  ci = commit
+  c  = checkout
+  co = checkout
   d  = diff
-  t  = tag
+  ds = diff --stat
+  f  = fetch
+  fp = fetch --prune
+  k  = cherry-pick
+  kx = cherry-pick -x
+  r  = remote
+  l  = log --pretty=oneline --abbrev-commit
+  n  = commit --verbose --amend
+  nn = commit --amend --no-edit
+  p  = diff --cached # "patch"
+  pm = pull
+  pr = pull --rebase
+  r  = rebase
   rh = reset --hard
+  ri = rebase --interactive
   rs = reset --soft
+  s  = status -sb
+  st = status
+  t  = diff --cached
+
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 
   current = log --pretty=format:'%ad %h %d' --abbrev-commit --date=short -1
-  cur = log --pretty=format:'%ad %h %d' --abbrev-commit --date=short -1
+  cur     = log --pretty=format:'%ad %h %d' --abbrev-commit --date=short -1
 
-  # show difference between the HEAD and the index
   staged = diff --cached
   stg    = diff --cached
 
@@ -31,10 +47,13 @@
   default = current
 
 [core]
-  excludesfile = /opt/boxen/config/git/gitignore
-
-[credential]
-	helper = /opt/boxen/bin/boxen-git-credential
+  excludesfile = ~/.gitignore_global
 
 [hub]
-protocol = https
+  protocol = https
+[credential]
+	helper = osxkeychain
+[github]
+	user = phinze
+[ghi]
+	token = b009ce7e1d28332b482c6024eaa92b3dfd9ce71f

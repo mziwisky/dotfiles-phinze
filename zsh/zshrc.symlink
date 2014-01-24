@@ -1,6 +1,6 @@
 # shortcut to this dotfiles path is $ZSH
 export ZSH=$HOME/.dotfiles
-echo "starting: $(date)"
 # source every .zsh file in this repo
-for config_file ($ZSH/**/*.zsh) source $config_file;
-echo "ending: $(date)"
+for config_file ($ZSH/**/*.zsh) do
+  source $config_file
+done

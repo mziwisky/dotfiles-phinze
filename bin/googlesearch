@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require 'nokogiri'
+require 'uri'
+require 'open-uri'
+
+query = ARGV.join(' ')
+nresults = 1
+
+doc = Nokogiri::HTML(open("http://www.google.com/search?q=#{URI.encode(query)}"))
+
+doc.css('h3.r a').take(nresults).each do |link|
+  puts link.content
+end

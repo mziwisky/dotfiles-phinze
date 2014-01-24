@@ -1,7 +1,5 @@
 # == root zsh config for non-login shells
 
-# Need PATH to be set properly for vim ! commands to work
-source /opt/boxen/env.sh
-
-# Avoid warnings when running sudo
-source ~/.dotfiles/boxen/ffi_search_path.zsh
+# just get homebrew stuff in the path
+export PATH="/usr/local/bin:${PATH}"
+export PATH="/usr/local/sbin:${PATH}"

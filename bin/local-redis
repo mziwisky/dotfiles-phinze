@@ -1,0 +1,22 @@
+#!/bin/sh
+
+HOMEBREW_PREFIX=$(brew --prefix)
+INITDB=${HOMEBREW_PREFIX}/bin/initdb
+PGCTL=${HOMEBREW_PREFIX}/bin/pg_ctl
+PGDATA=${HOMEBREW_PREFIX}/var/postgres
+PGLOG=${PGDATA}/server.log
+
+case $1 in 
+	start)
+    ${PGCTL} -D ${PGDATA} -l ${PGLOG} start
+		;;
+	stop)
+		${PGCTL} -D ${PGDATA} stop -m fast
+		;;
+	status)
+		${PGCTL} -D ${PGDATA} status
+		;;
+	init)
+		${INITDB} -D ${PGDATA}
+		;;
+esac

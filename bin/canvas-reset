@@ -1,0 +1,66 @@
+#!/usr/bin/env ruby
+
+puts "!!!!"
+puts "!!!! IMMA RESET YOUR CANVAS!"
+puts "!!!! my pid: #{Process.pid}"
+puts "!!!!"
+
+unless File.basename(Dir.pwd) == 'canvas-lms'
+  raise "run me from canvas-lms directory" 
+end
+
+start_time = Time.now
+
+puts "unlinking canvas pow to stop db connections"
+`powder unlink`
+
+DBS_TO_DROP=%w[
+  canvas_development
+  canvas_queue_development
+  canvas_test
+  canvas_queue_test
+]
+
+pids = []
+
+DBS_TO_DROP.each do |db|
+  puts "resetting #{db}"
+  pids << fork do
+    `psql -c "select pg_terminate_backend(pid) from pg_stat_activity where datname = '#{db}';" postgres`
+    `dropdb --if-exists #{db}`
+    `createdb #{db}`
+  end
+end
+
+puts "waiting for db resets to finish #{pids.inspect}"
+Process.waitall
+
+pids = []
+
+puts "migrating dev and test environments"
+pids << fork { `bundle exec rake db:migrate 2>&1` }
+pids << fork { `env RAILS_ENV=test bundle exec rake db:migrate 2>&1` }
+
+puts "waiting for db migrate processes to complete #{pids.inspect}"
+Process.waitall
+
+
+puts "relinking canvas pow"
+`powder link`
+
+pids = []
+
+puts "setting up initial development db"
+pids << fork { `bundle exec rake db:initial_setup` }
+puts "kicking off initial request to spin up rails"
+pids << fork { puts `curl -s http://canvas-lms.dev/health_check` }
+
+puts "waiting for db init and first request to finish: #{pids.inspect}"
+Process.waitpid
+
+elapsed = Time.now - start_time
+
+puts "-->"
+puts "--> Done! Enjoy your clean canvas! <--"
+puts "--> (that took: #{(elapsed / 60).to_i}m #{(elapsed % 60).to_i}s)"
+puts "-->"

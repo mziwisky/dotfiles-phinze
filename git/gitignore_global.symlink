@@ -2,3 +2,5 @@
 tags
 vendor/plugins/multiple_root_accounts/
 .ruby-version
+Gemfile.vagrant-on-rails*
+.freighthop.json
