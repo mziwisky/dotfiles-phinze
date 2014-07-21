@@ -1,5 +1,6 @@
 dot_config/pianobar/config
 vim/vim.symlink/.netrwhist
+vim/vim.symlink/bundle
 
 mutt/muttrc.instructure
 mutt/muttrc.personal

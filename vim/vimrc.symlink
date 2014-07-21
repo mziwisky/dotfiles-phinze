@@ -38,8 +38,7 @@ Bundle 'guns/vim-clojure-static'
 Bundle 'tpope/vim-fireplace'
 Bundle 'rking/ag.vim'
 Bundle 'kien/ctrlp.vim'
-
-Bundle 'file:///Users/phinze/src/vimux-ruby-test'
+Bundle 'skalnik/vim-vroom'
 
 " run this in a terminal to update after saving
 " vim +BundleInstall +qall

@@ -1,14 +1,14 @@
 # split windows like vim
 # vim's definition of a horizontal/vertical split is reversed from tmux's
-bind s split-window -v
-bind v split-window -h
+bind s split-window -v -c "#{pane_current_path}"
+bind v split-window -h -c "#{pane_current_path}"
 
-bind ^s split-window -v
-bind ^v split-window -h
+bind ^s split-window -v -c "#{pane_current_path}"
+bind ^v split-window -h -c "#{pane_current_path}"
 
 # hold shift for a subordinate window split
-bind S split-window -v -p 30
-bind V split-window -h -p 30
+bind S split-window -v -p 30 -c "#{pane_current_path}"
+bind V split-window -h -p 30 -c "#{pane_current_path}"
 
 # move around panes with hjkl, as one would in vim after pressing ctrl-w
 bind h select-pane -L
@@ -36,6 +36,8 @@ bind + resize-pane -U 1
 # bind : to command-prompt like vim
 # this is the default in tmux already
 bind : command-prompt
+
+bind c new-window -c "#{pane_current_path}"
 
 # session management
 bind C new-session
