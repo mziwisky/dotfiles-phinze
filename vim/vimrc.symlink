@@ -1,48 +1,50 @@
 " don't emulate vi bugs (must be first; has side effects)
 set nocompatible
 
-" Load vim powerline
-set rtp+=/usr/local/lib/python2.7/site-packages/powerline/bindings/vim
+"
+" NeoBundle
+"
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
 
-" ## Vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call neobundle#begin(expand('~/.vim/bundle/'))
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
+NeoBundleFetch 'Shougo/neobundle.vim'
 
-Bundle 'benmills/vimux'
-Bundle 'chriskempson/vim-tomorrow-theme'
-Bundle 'gregsexton/gitv'
-Bundle 'jeroenbourgois/vim-actionscript'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'kien/rainbow_parentheses.vim'
-Bundle 'nono/vim-handlebars'
-Bundle 'rodjek/vim-puppet'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'tomtom/tcomment_vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'rking/vim-ruby-refactoring'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-rails'
-Bundle 'matchit.zip'
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'godlygeek/tabular'
-Bundle 'dart-lang/dart-vim-plugin'
-Bundle 'DrawIt'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'guns/vim-clojure-static'
-Bundle 'tpope/vim-fireplace'
-Bundle 'rking/ag.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'skalnik/vim-vroom'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'benmills/vimux'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'chriskempson/vim-tomorrow-theme'
+NeoBundle 'christoomey/vim-tmux-navigator'
+NeoBundle 'ekalinin/Dockerfile.vim'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'guns/vim-clojure-static'
+NeoBundle 'jeroenbourgois/vim-actionscript'
+NeoBundle 'kana/vim-textobj-user'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'kien/rainbow_parentheses.vim'
+NeoBundle 'matchit.zip'
+NeoBundle 'nelstrom/vim-textobj-rubyblock'
+NeoBundle 'nono/vim-handlebars'
+NeoBundle 'ntpeters/vim-better-whitespace'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'rking/ag.vim'
+NeoBundle 'rodjek/vim-puppet'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'skalnik/vim-vroom'
+NeoBundle 'terryma/vim-expand-region'
+NeoBundle 'tomtom/tcomment_vim'
+NeoBundle 'tpope/vim-bundler'
+NeoBundle 'tpope/vim-fireplace'
+NeoBundle 'tpope/vim-vinegar'
+NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'vim-scripts/gitignore'
 
-" run this in a terminal to update after saving
-" vim +BundleInstall +qall
+call neobundle#end()
 
+NeoBundleCheck
 
 " ## Display
 
@@ -108,10 +110,6 @@ set directory=~/.vim-tmp//
 
 " ## Keybindings
 
-" make `-` and `_` work like `o` and `O` without leaving you stuck in insert mode.
-nnoremap - o<esc>
-nnoremap _ O<esc>
-
 " make up, down, home and end keys work intuitively for long paragraphs
 map <up> gk
 imap <up> <C-o>gk
@@ -148,14 +146,6 @@ map <silent> <LocalLeader>nh :nohls<CR>
 map <silent> <LocalLeader>cc :TComment<CR>
 map <silent> <LocalLeader>rt :!ctags -R --exclude=".git\|.svn\|log\|tmp\|db\|pkg" --extra=+f<CR>
 
-function! Trim()
-  %s/\s*$//
-endfunction
-command! -nargs=0 Trim :call Trim()
-nnoremap <silent> <Leader>cw :Trim<CR>
-
-let g:html_number_lines = 0
-
 " http://robots.thoughtbot.com/faster-grepping-in-vim
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
@@ -179,5 +169,38 @@ set shortmess+=A
 " Use r in visual mode to replace selection with a paste.
 vmap r "_dP
 
-" Always trim trailing spaces on save
-autocmd BufWritePre *.* :%s/\s\+$//e
+" Space Leader OMG
+let mapleader = "\<Space>"
+
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>b :CtrlPBuffer<CR>
+nnoremap <Leader>m :CtrlPMRUFiles<CR>
+nnoremap <Leader>O :CtrlPMixed<CR>
+
+" <Space>w to write a file
+nnoremap <Leader>w :w<CR>
+
+" <Space>q to close a file
+nnoremap <Leader>q :q<CR>
+
+" <Space>Q to force close a file
+nnoremap <Leader>Q :q!<CR>
+
+nnoremap <Leader>B :!tig blame % +<C-r>=line('.')<CR><CR>
+
+" Copy & paste to system clipboard with <Space>p and <Space>y
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+" Enter visual line mode with <Space><Space>:
+nmap <Leader><Leader> V
+
+" enter reruns last test...
+nmap <CR> :wa<CR> :VimuxRunLastCommand<CR>
+
+" ...but does normal thing in quickfix window
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>

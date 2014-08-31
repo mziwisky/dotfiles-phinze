@@ -4,3 +4,6 @@ let g:syntastic_puppet_puppetlint_args = '--no-documentation-check --no-80chars-
 "       \ 'passive_filetypes': ['puppet'] }
 let syntastic_mode_map = { 'passive_filetypes': ['html', 'hbs', 'handlebars'] }
 
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_ruby_checkers = ['mri']
+let g:syntastic_yaml_checkers = ['jsyaml']
