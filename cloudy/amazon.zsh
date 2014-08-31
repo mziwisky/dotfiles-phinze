@@ -1,5 +1,4 @@
 export AWS_CLOUDWATCH_HOME="/usr/local/Library/LinkedKegs/cloud-watch/jars"
-export AWS_CREDENTIAL_FILE=$HOME/.aws-credentials-master
 export AWS_IAM_HOME="/usr/local/opt/aws-iam-tools/jars"
 export EC2_AMITOOL_HOME="/usr/local/Library/LinkedKegs/ec2-ami-tools/jars"
 export EC2_HOME="/usr/local/Library/LinkedKegs/ec2-api-tools/jars"
@@ -11,3 +10,5 @@ export AWS_DEFAULT_REGION=us-east-1
 
 # export EC2_CERT="$(/bin/ls "$HOME"/.ec2/cert-*.pem | /usr/bin/head -1)"
 # export EC2_PRIVATE_KEY="$(/bin/ls "$HOME"/.ec2/pk-*.pem | /usr/bin/head -1)"
+#
+source $(which aws_zsh_completer.sh)
