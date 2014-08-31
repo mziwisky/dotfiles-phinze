@@ -57,3 +57,5 @@
 	user = phinze
 [ghi]
 	token = b009ce7e1d28332b482c6024eaa92b3dfd9ce71f
+[color "diff"]
+	whitespace = red reverse
