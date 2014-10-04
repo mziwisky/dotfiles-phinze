@@ -146,9 +146,6 @@ map <silent> <LocalLeader>nh :nohls<CR>
 map <silent> <LocalLeader>cc :TComment<CR>
 map <silent> <LocalLeader>rt :!ctags -R --exclude=".git\|.svn\|log\|tmp\|db\|pkg" --extra=+f<CR>
 
-" http://robots.thoughtbot.com/faster-grepping-in-vim
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
 " EASIER SPLIT NAVIGATIONS
 " We can use different key mappings for easy navigation between splits to save
 " a keystroke. So instead of ctrl-w then j, it’s just ctrl-j:
@@ -204,3 +201,11 @@ nmap <CR> :wa<CR> :VimuxRunLastCommand<CR>
 
 " ...but does normal thing in quickfix window
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
+if executable('ag')
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
+
+" grep for word/Word under cursor with leader-g/G
+nnoremap <Leader>g :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+nnoremap <Leader>G :grep! "\b<C-R><C-A>\b"<CR>:cw<CR>
