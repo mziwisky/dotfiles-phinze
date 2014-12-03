@@ -48,6 +48,7 @@
 
 [core]
   excludesfile = ~/.gitignore_global
+	editor = reattach-to-user-namespace vim
 
 [hub]
   protocol = https

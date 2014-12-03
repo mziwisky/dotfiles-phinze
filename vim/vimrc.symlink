@@ -15,7 +15,6 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'benmills/vimux'
 NeoBundle 'bling/vim-airline'
-NeoBundle 'chriskempson/vim-tomorrow-theme'
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'ekalinin/Dockerfile.vim'
 NeoBundle 'godlygeek/tabular'
@@ -41,6 +40,9 @@ NeoBundle 'tpope/vim-fireplace'
 NeoBundle 'tpope/vim-vinegar'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'vim-scripts/gitignore'
+NeoBundle 'jtratner/vim-flavored-markdown'
+NeoBundle 'godlygeek/csapprox'
+NeoBundle 'morhetz/gruvbox'
 
 call neobundle#end()
 
@@ -62,11 +64,6 @@ set number
 set hidden
 " keep 5 lines of context on the screen while scrolling, instead of scrolling when cursor is at very bottom
 set scrolloff=5
-
-" ## Theme
-
-set background=dark
-colorscheme Tomorrow-Night-Eighties
 
 " ## Indentation and Tabs
 
