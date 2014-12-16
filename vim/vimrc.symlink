@@ -204,5 +204,5 @@ if executable('ag')
 endif
 
 " grep for word/Word under cursor with leader-g/G
-nnoremap <Leader>g :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-nnoremap <Leader>G :grep! "\b<C-R><C-A>\b"<CR>:cw<CR>
+nnoremap <Leader>g :grep! "\b<cword>\b"<CR>:cw<CR>
+nnoremap <Leader>G :grep! "\b<cWORD>\b"<CR>:cw<CR>
